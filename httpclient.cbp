@@ -25,7 +25,7 @@
 					<Add option="-lardusim" />
 				</Linker>
 				<Environment>
-					<Variable name="ARDUINO_DIR" value="$(APP_PATH)/ardusim" />
+					<Variable name="ARDUINO_DIR" value="$(APP_PATH)\ardusim" />
 				</Environment>
 			</Target>
 			<Target title="Simulator - Release">
@@ -47,7 +47,7 @@
 					<Add option="-lardusim" />
 				</Linker>
 				<Environment>
-					<Variable name="ARDUINO_DIR" value="$(APP_PATH)/ardusim" />
+					<Variable name="ARDUINO_DIR" value="$(APP_PATH)\ardusim" />
 				</Environment>
 			</Target>
 			<Target title="Arduino Uno">
@@ -503,7 +503,7 @@
 					<Add after='avr-size --mcu=$(MCU) --format=avr &quot;$(TARGET_OUTPUT_FILE)&quot;' />
 				</ExtraCommands>
 				<Environment>
-					<Variable name="BOARD" value="Arduino Mega 2560/ADK" />
+					<Variable name="BOARD" value="Arduino Mega 2560\ADK" />
 					<Variable name="BOARD_ID" value="mega2560" />
 					<Variable name="MCU" value="atmega2560" />
 					<Variable name="MCU_CLOCK" value="16" />
@@ -620,10 +620,19 @@
 		<Compiler>
 			<Add directory="." />
 		</Compiler>
+		<Unit filename="conversion.cpp" />
+		<Unit filename="conversion.h" />
+		<Unit filename="debuglog.h" />
 		<Unit filename="httpclient.ino">
 			<Option compile="1" />
 			<Option link="1" />
 		</Unit>
+		<Unit filename="iget.h" />
+		<Unit filename="ipost.h" />
+		<Unit filename="lwHTTPClient.cpp" />
+		<Unit filename="lwHTTPClient.h" />
+		<Unit filename="lwgenericclient.cpp" />
+		<Unit filename="lwgenericclient.h" />
 		<Extensions>
 			<code_completion />
 			<debugger />

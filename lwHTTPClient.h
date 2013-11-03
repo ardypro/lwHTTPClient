@@ -1,18 +1,29 @@
 #ifndef LWHTTPCLIENT_H
 #define LWHTTPCLIENT_H
-
-#include <lwgenericclient.h>
+#define implements public
 #include "iget.h"
-#include "lwget.h"
+#include "lwgenericclient.h"
 
 
-class lwHTTPClient : public lwGenericClient//, public  IGet
+
+class lwHTTPClient : public lwGenericClient, implements  IGet
 {
 public:
-    lwHTTPClient();
-    lwHTTPClient(const char* userkey, const char* gateway);
+    lwHTTPClient():lwGenericClient()
+    {
 
-    virtual ~lwHTTPClient();
+    }
+
+
+    lwHTTPClient(const char* userkey, const char* gateway):lwGenericClient(userkey,gateway)
+    {
+
+    }
+
+    virtual ~lwHTTPClient()
+    {
+
+    }
 
     //implements ipost
     void append(const char* sensor, bool value);
@@ -24,6 +35,7 @@ public:
     void append(const char* sensor, const char* value);
 
     virtual void upload();
+
 
     //implements iget
     virtual void getValue(const char* sensor, bool &value);
@@ -37,7 +49,10 @@ public:
 
 protected:
     virtual void uploadValue() ;
+    virtual void clearCommand();
+    virtual void appendCommand(const char* cmd);
 private:
 };
+
 
 #endif // LWHTTPCLIENT_H

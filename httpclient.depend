@@ -1,13 +1,12 @@
 # depslib dependency file v1.0
-1382894773 source:e:\repo\git\ongithub\lwclients\lwhttpclient\lwhttpclient.cpp
+1383486742 source:e:\repo\git\ongithub\lwclients\lwhttpclient\lwhttpclient.cpp
 	"lwHTTPClient.h"
 
-1382895017 e:\repo\git\ongithub\lwclients\lwhttpclient\lwhttpclient.h
-	<lwgenericclient.h>
+1383492736 e:\repo\git\ongithub\lwclients\lwhttpclient\lwhttpclient.h
 	"iget.h"
-	"lwget.h"
+	"lwgenericclient.h"
 
-1382894843 source:e:\repo\git\ongithub\lwclients\lwhttpclient\httpclient.ino
+1383473455 source:e:\repo\git\ongithub\lwclients\lwhttpclient\httpclient.ino
 	<Arduino.h>
 	"lwHTTPClient.h"
 
@@ -64,6 +63,33 @@
 1382894773 source:e:\repo\git\ongithub\lwclients\lwhttpclient\lwget.cpp
 	"lwGet.h"
 
-1382894773 e:\repo\git\ongithub\lwclients\lwhttpclient\lwget.h
+1382977654 e:\repo\git\ongithub\lwclients\lwhttpclient\lwget.h
 	<iget.h>
+
+1383473402 e:\repo\git\ongithub\lwclients\lwhttpclient\iget.h
+
+1383492785 e:\repo\git\ongithub\lwclients\lwhttpclient\lwgenericclient.h
+	"ipost.h"
+	"debuglog.h"
+	"Arduino.h"
+
+1383473436 e:\repo\git\ongithub\lwclients\lwhttpclient\ipost.h
+
+1382499549 e:\repo\git\ongithub\lwclients\lwhttpclient\debuglog.h
+	"HardwareSerial.h"
+
+1382531524 source:e:\repo\git\ongithub\lwclients\lwhttpclient\conversion.cpp
+	"conversion.h"
+	"debuglog.h"
+	"HardwareSerial.h"
+	"stdio.h"
+	"stdlib.h"
+	"string.h"
+	"iostream"
+
+1382459987 e:\repo\git\ongithub\lwclients\lwhttpclient\conversion.h
+
+1382857683 source:e:\repo\git\ongithub\lwclients\lwhttpclient\lwgenericclient.cpp
+	"lwgenericclient.h"
+	"conversion.h"
 

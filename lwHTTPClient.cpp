@@ -1,19 +1,5 @@
 #include "lwHTTPClient.h"
 
-lwHTTPClient::lwHTTPClient()
-{
-    //ctor
-}
-
-lwHTTPClient::~lwHTTPClient()
-{
-    //dtor
-}
-
-lwHTTPClient::lwHTTPClient(const char* userkey, const char* gateway):lwGenericClient(userkey, gateway)
-{
-
-}
 
 void lwHTTPClient::append(const char* sensor, bool value)
 {
@@ -46,6 +32,16 @@ void lwHTTPClient::append(const char* sensor, double value, unsigned int digits)
 }
 
 void lwHTTPClient::append(const char* sensor, const char* value)
+{
+
+}
+
+
+
+void lwHTTPClient::upload()
+{}
+
+void lwHTTPClient::uploadValue()
 {
 
 }
@@ -91,3 +87,13 @@ void lwHTTPClient::getValue(const char* sensor, char* &value)
 
 }
 
+
+void lwHTTPClient::clearCommand()
+{
+
+}
+
+void lwHTTPClient::appendCommand(const char* cmd)
+{
+
+}
