@@ -1,6 +1,11 @@
 #include "lwHTTPClient.h"
 
 
+bool lwHTTPClient::connect()
+{
+
+}
+
 void lwHTTPClient::append(const char* sensor, bool value)
 {
 

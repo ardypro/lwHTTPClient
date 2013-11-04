@@ -3,7 +3,8 @@
 #define implements public
 #include "iget.h"
 #include "lwgenericclient.h"
-
+#include "Ethernet.h"
+#include <SPI.h>
 
 
 class lwHTTPClient : public lwGenericClient, implements  IGet
@@ -25,6 +26,8 @@ public:
 
     }
 
+    virtual bool connect();
+
     //implements ipost
     void append(const char* sensor, bool value);
     void append(const char* sensor, int value);
@@ -35,7 +38,6 @@ public:
     void append(const char* sensor, const char* value);
 
     virtual void upload();
-
 
     //implements iget
     virtual void getValue(const char* sensor, bool &value);
@@ -52,6 +54,9 @@ protected:
     virtual void clearCommand();
     virtual void appendCommand(const char* cmd);
 private:
+
+    EthernetClient httpClient;
+
 };
 
 

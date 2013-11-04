@@ -45,37 +45,40 @@
 class lwGenericClient : public IPost
 {
 public:
-    lwGenericClient (const char* userkey, const char* gateway)
+    lwGenericClient(const char* userkey, const char* gateway)
     {
+        cmdJSON=(char*) malloc(9);
+        clearCommand();
+        lastTime = millis();
+
         userKey = userkey;
         gateWay = gateway;
+    }
+
+    lwGenericClient()
+    {
         cmdJSON=(char*) malloc(9);
         clearCommand();
         lastTime = millis();
     }
 
-    lwGenericClient()
-    {
-        lastTime = millis();
-    }
-
-    void setUserKey (const char* userkey)
+    void setUserKey(const char* userkey)
     {
         userKey = userkey;
     }
 
-    void setGateWay (const char* gateway)
+    void setGateWay(const char* gateway)
     {
         gateWay = gateway;
     }
 
-    virtual  void append (const char* sensor, bool value) = 0;
-    virtual  void append (const char* sensor, int value) = 0;
-    virtual  void append (const char* sensor, unsigned int value) = 0;
-    virtual  void append (const char* sensor, long value) = 0;
-    virtual  void append (const char* sensor, unsigned long value) = 0;
-    virtual  void append (const char* sensor, double value,unsigned int digits=2) = 0;
-    virtual  void append (const char* sensor, const char* value) = 0;
+    virtual  void append(const char* sensor, bool value) = 0;
+    virtual  void append(const char* sensor, int value) = 0;
+    virtual  void append(const char* sensor, unsigned int value) = 0;
+    virtual  void append(const char* sensor, long value) = 0;
+    virtual  void append(const char* sensor, unsigned long value) = 0;
+    virtual  void append(const char* sensor, double value,unsigned int digits=2) = 0;
+    virtual  void append(const char* sensor, const char* value) = 0;
 
     virtual void upload();
 

@@ -1,10 +1,13 @@
 #include <Arduino.h>
 #include "lwHTTPClient.h"
-
+/*
+#include "Ethernet.h"
+#include "SPI.h"
+*/
 #define userkey ""
 #define gateway ""
 
-lwHTTPClient client;
+lwHTTPClient clients;
 
 
 void setup()
