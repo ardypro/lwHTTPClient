@@ -1,8 +1,8 @@
 # depslib dependency file v1.0
-1383498897 source:e:\repo\git\ongithub\lwclients\lwhttpclient\lwhttpclient.cpp
+1383534754 source:e:\repo\git\ongithub\lwclients\lwhttpclient\lwhttpclient.cpp
 	"lwHTTPClient.h"
 
-1383529917 e:\repo\git\ongithub\lwclients\lwhttpclient\lwhttpclient.h
+1383580145 e:\repo\git\ongithub\lwclients\lwhttpclient\lwhttpclient.h
 	"iget.h"
 	"lwgenericclient.h"
 	"Ethernet.h"
@@ -72,12 +72,12 @@
 
 1383473402 e:\repo\git\ongithub\lwclients\lwhttpclient\iget.h
 
-1383498671 e:\repo\git\ongithub\lwclients\lwhttpclient\lwgenericclient.h
+1383580145 e:\repo\git\ongithub\lwclients\lwhttpclient\lwgenericclient.h
 	"ipost.h"
 	"debuglog.h"
 	"Arduino.h"
 
-1383473436 e:\repo\git\ongithub\lwclients\lwhttpclient\ipost.h
+1383580145 e:\repo\git\ongithub\lwclients\lwhttpclient\ipost.h
 
 1382499549 e:\repo\git\ongithub\lwclients\lwhttpclient\debuglog.h
 	"HardwareSerial.h"

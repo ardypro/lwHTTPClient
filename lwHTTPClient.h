@@ -28,6 +28,7 @@ public:
 
     virtual bool connect();
 
+
     //implements ipost
     void append(const char* sensor, bool value);
     void append(const char* sensor, int value);
@@ -37,7 +38,7 @@ public:
     void append(const char* sensor, double value,unsigned int digits=2);
     void append(const char* sensor, const char* value);
 
-    virtual void upload();
+    virtual void submit();
 
     //implements iget
     virtual void getValue(const char* sensor, bool &value);

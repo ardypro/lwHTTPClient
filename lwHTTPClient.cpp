@@ -1,5 +1,7 @@
 #include "lwHTTPClient.h"
 
+byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED};
+char lwHTTPServer[] = "open.lewei50.com";
 
 bool lwHTTPClient::connect()
 {
@@ -43,7 +45,7 @@ void lwHTTPClient::append(const char* sensor, const char* value)
 
 
 
-void lwHTTPClient::upload()
+void lwHTTPClient::submit()
 {}
 
 void lwHTTPClient::uploadValue()

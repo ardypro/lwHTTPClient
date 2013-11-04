@@ -21,7 +21,7 @@ public:
     virtual void append (const char* sensor, double value, unsigned int digits=2) = 0;
     virtual void append (const char* sensor, const char* value) = 0;
 
-    virtual void upload()=0;
+    virtual void submit()=0;
 };
 
 #endif // IPOST_H

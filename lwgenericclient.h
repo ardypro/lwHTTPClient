@@ -14,16 +14,16 @@
     使用方法：
 
     创建实例之后，第一步设置好UserKey和GateWay；
-    上传数据时，先调用append()方法追加数据，然后统一通过upload()来上传到服务器。
+    上传数据时，先调用append()方法追加数据，然后统一通过submit()来上传到服务器。
 
-    根据协议，每60秒需要至少调用一次update()方法发送心跳包，保持与服务器的连接。
+    根据TCP长连接协议，每60秒需要至少调用一次update()方法发送心跳包，保持与服务器的连接。
 
 
 
     子类化注意事项
     ==============
 
-    创建此基类的子类的时候，需要注意upload（）方法并没有真正实现上传数据的功能，
+    创建此基类的子类的时候，需要注意submit（）方法并没有真正实现上传数据的功能，
     具体实现的代码在子类的uploadValue()方法中。
 
 */
@@ -51,8 +51,8 @@ public:
         clearCommand();
         lastTime = millis();
 
-        userKey = userkey;
-        gateWay = gateway;
+        setUserKey(userKey);
+        setGateWay(gateWay);
     }
 
     lwGenericClient()
@@ -80,7 +80,7 @@ public:
     virtual  void append(const char* sensor, double value,unsigned int digits=2) = 0;
     virtual  void append(const char* sensor, const char* value) = 0;
 
-    virtual void upload();
+    virtual void submit();
 
 protected:
     virtual void uploadValue() = 0;
