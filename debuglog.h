@@ -14,16 +14,16 @@ public:
     void println(char* msg="")
     {
         print(msg);
-        //printf("\n");
-        //printf("\n");
+#ifdef EMULATOR
+        printf("\n");
+#else
         Serial.println("");
-        Serial.println("");
+#endif
     }
 
     void println(long msg)
     {
         print(msg);
-        Serial.println("");
         Serial.println("");
     }
 
@@ -31,25 +31,33 @@ public:
     {
         print(msg);
         Serial.println("");
-        Serial.println("");
     }
 
     void print(char* msg)
     {
-        //printf("%s", msg);
-        Serial.println(msg);
+#ifdef EMULATOR
+        printf("%s", msg);
+#else
+        Serial.print(msg);
+#endif
     }
 
     void print(long msg)
     {
-        //printf("%ld",msg);
-        Serial.println(msg);
+#ifdef EMULATOR
+        printf("%ld",msg);
+#else
+        Serial.print(msg);
+#endif
     }
 
     void print(double msg)
     {
-        //printf("%f",msg);
-        Serial.println(msg);
+#ifdef EMULATOR
+        printf("%f",msg);
+#else
+        Serial.print(msg);
+#endif
     }
 
 protected:

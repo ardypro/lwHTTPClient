@@ -16,8 +16,6 @@
     创建实例之后，第一步设置好UserKey和GateWay；
     上传数据时，先调用append()方法追加数据，然后统一通过submit()来上传到服务器。
 
-    根据TCP长连接协议，每60秒需要至少调用一次update()方法发送心跳包，保持与服务器的连接。
-
 
 
     子类化注意事项
@@ -32,7 +30,10 @@
     版本历史
     ========
 
-    v1.0 @2013-10-01    创建项目
+    v1.1 @ 2013-11-05    将原来的纯虚方法append()改成实体方法，每个append方法生成相应的key：value JSON对
+                         cmdJSON字串的内容为所有的key:value对，不包含http或tcp方式中特定的字符前缀或者后缀
+                         例如不含tcp方式中的"&^!"
+    v1.0 @ 2013-10-01    创建项目
 
 */
 
@@ -72,26 +73,27 @@ public:
         gateWay = gateway;
     }
 
-    virtual  void append(const char* sensor, bool value) = 0;
-    virtual  void append(const char* sensor, int value) = 0;
-    virtual  void append(const char* sensor, unsigned int value) = 0;
-    virtual  void append(const char* sensor, long value) = 0;
-    virtual  void append(const char* sensor, unsigned long value) = 0;
-    virtual  void append(const char* sensor, double value,unsigned int digits=2) = 0;
-    virtual  void append(const char* sensor, const char* value) = 0;
+    virtual  void append(const char* sensor, bool value);
+    virtual  void append(const char* sensor, int value);
+    virtual  void append(const char* sensor, unsigned int value);
+    virtual  void append(const char* sensor, long value);
+    virtual  void append(const char* sensor, unsigned long value);
+    virtual  void append(const char* sensor, double value,unsigned int digits=2);
+    virtual  void append(const char* sensor, const char* value);
 
     virtual void submit();
 
 protected:
-    virtual void uploadValue() = 0;
+    unsigned int interval;
+    unsigned long lastTime;
     const char* userKey;
     const char* gateWay;
     char* cmdJSON;
 
+    virtual void uploadValue() = 0;
     virtual void clearCommand();
     virtual void appendCommand(const char* cmd);
-    unsigned int interval;
-    unsigned long lastTime;
+
 private:
 
 };

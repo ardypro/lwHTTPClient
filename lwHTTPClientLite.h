@@ -1,6 +1,7 @@
-#ifndef lwHTTPClientLite_H
-#define lwHTTPClientLite_H
+#ifndef LWHTTPCLIENTLITE_H
+#define LWHTTPCLIENTLITE_H
 #define implements public
+
 #include "iget.h"
 #include "lwgenericclient.h"
 #include "Ethernet.h"
@@ -12,18 +13,15 @@ class lwHTTPClientLite : public lwGenericClient, implements  IGet
 public:
     lwHTTPClientLite():lwGenericClient()
     {
-
     }
 
 
     lwHTTPClientLite(const char* userkey, const char* gateway):lwGenericClient(userkey,gateway)
     {
-
     }
 
     virtual ~lwHTTPClientLite()
     {
-
     }
 
     virtual bool connect();

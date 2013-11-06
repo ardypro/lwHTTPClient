@@ -10,47 +10,56 @@ bool lwHTTPClientLite::connect()
 
 void lwHTTPClientLite::append(const char* sensor, bool value)
 {
+    lwGenericClient::append(sensor,value);
 
 }
 
 void lwHTTPClientLite::append(const char* sensor, int value)
 {
+    lwGenericClient::append(sensor,value);
 
 }
 
 void lwHTTPClientLite::append(const char* sensor, unsigned int value)
 {
+    lwGenericClient::append(sensor,value);
 
 }
 
 void lwHTTPClientLite::append(const char* sensor, long value)
 {
+    lwGenericClient::append(sensor,value);
 
 }
 
 void lwHTTPClientLite::append(const char* sensor, unsigned long value)
 {
+    lwGenericClient::append(sensor,value);
 
 }
 
 void lwHTTPClientLite::append(const char* sensor, double value, unsigned int digits)
 {
+    lwGenericClient::append(sensor,value);
 
 }
 
 void lwHTTPClientLite::append(const char* sensor, const char* value)
 {
+    lwGenericClient::append(sensor,value);
 
 }
 
 
 
 void lwHTTPClientLite::submit()
-{}
+{
+    lwGenericClient::submit();
+}
 
 void lwHTTPClientLite::uploadValue()
 {
-    debuglog.println(cmdJSON);
+    DEBUG.println(cmdJSON);
 }
 
 
@@ -97,10 +106,10 @@ void lwHTTPClientLite::getValue(const char* sensor, char* &value)
 
 void lwHTTPClientLite::clearCommand()
 {
-
+    //lwGenericClient::clearCommand();
 }
 
 void lwHTTPClientLite::appendCommand(const char* cmd)
 {
-
+    lwGenericClient::appendCommand(cmd);
 }
