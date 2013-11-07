@@ -8,7 +8,7 @@
 #include <SPI.h>
 
 
-class lwHTTPClientLite : public lwGenericClient, implements  IGet
+class lwHTTPClientLite : public lwGenericClient, public  IGet
 {
 public:
     lwHTTPClientLite():lwGenericClient()

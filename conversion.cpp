@@ -67,7 +67,7 @@ unsigned int conversion::floatToStr(float value,unsigned int digits, char* &str)
 
     dtostrf (value, 1, digits, str);  //arduino style
 
-    //snprintf(str,len,"%g",value);
+    //snprintf(str,len,"%g",value);  //arduino不支持
 
 
     return strlen(str);
@@ -89,7 +89,7 @@ unsigned int conversion::appendChar(char* &dest, const char* str)
         strcat (str, ".com");
         printf ("String = %s,  Address = %u\n", str, str);
 
-        Serial.println (str);
+        //Serial.println (str);
         free (str);
     */
 
