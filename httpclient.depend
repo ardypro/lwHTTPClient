@@ -8,9 +8,10 @@
 	"Ethernet.h"
 	<SPI.h>
 
-1383674350 source:e:\repo\git\ongithub\lwclients\lwhttpclient\httpclient.ino
+1383786803 source:e:\repo\git\ongithub\lwclients\lwhttpclient\httpclient.ino
 	<Arduino.h>
 	"lwHTTPClientLite.h"
+	"memfree.h"
 	"Ethernet.h"
 	"SPI.h"
 
@@ -72,7 +73,7 @@
 
 1383473402 e:\repo\git\ongithub\lwclients\lwhttpclient\iget.h
 
-1383622210 e:\repo\git\ongithub\lwclients\lwhttpclient\lwgenericclient.h
+1383787060 e:\repo\git\ongithub\lwclients\lwhttpclient\lwgenericclient.h
 	"ipost.h"
 	"debuglog.h"
 	"Arduino.h"
@@ -93,17 +94,17 @@
 
 1382459987 e:\repo\git\ongithub\lwclients\lwhttpclient\conversion.h
 
-1383622507 source:e:\repo\git\ongithub\lwclients\lwhttpclient\lwgenericclient.cpp
+1383787060 source:e:\repo\git\ongithub\lwclients\lwhttpclient\lwgenericclient.cpp
 	"lwgenericclient.h"
 	"conversion.h"
 
-1383671962 e:\repo\git\ongithub\lwclients\lwhttpclient\lwhttpclientlite.h
+1383787143 e:\repo\git\ongithub\lwclients\lwhttpclient\lwhttpclientlite.h
 	"iget.h"
 	"lwgenericclient.h"
 	"Ethernet.h"
 	<SPI.h>
 
-1383673939 source:e:\repo\git\ongithub\lwclients\lwhttpclient\lwhttpclientlite.cpp
+1383709419 source:e:\repo\git\ongithub\lwclients\lwhttpclient\lwhttpclientlite.cpp
 	"lwHTTPClientLite.h"
 
 1383674652 source:e:\repo\git\ongithub\lwclients\lwhttpclient\memfree.cpp

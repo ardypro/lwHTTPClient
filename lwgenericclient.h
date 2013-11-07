@@ -93,7 +93,7 @@ protected:
     virtual void uploadValue() = 0;
     virtual void clearCommand();
     virtual void appendCommand(const char* cmd);
-
+    virtual void formatCommand()=0; //submit数据之前调用，修改cmdJSON为相应的命令格式
 private:
 
 };

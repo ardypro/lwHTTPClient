@@ -629,10 +629,12 @@
 		</Unit>
 		<Unit filename="iget.h" />
 		<Unit filename="ipost.h" />
-		<Unit filename="lwHTTPClient.cpp" />
-		<Unit filename="lwHTTPClient.h" />
+		<Unit filename="lwHTTPClientLite.cpp" />
+		<Unit filename="lwHTTPClientLite.h" />
 		<Unit filename="lwgenericclient.cpp" />
 		<Unit filename="lwgenericclient.h" />
+		<Unit filename="memfree.cpp" />
+		<Unit filename="memfree.h" />
 		<Extensions>
 			<code_completion />
 			<debugger />

@@ -106,10 +106,15 @@ void lwHTTPClientLite::getValue(const char* sensor, char* &value)
 
 void lwHTTPClientLite::clearCommand()
 {
-    //lwGenericClient::clearCommand();
+    lwGenericClient::clearCommand();
 }
 
 void lwHTTPClientLite::appendCommand(const char* cmd)
 {
     lwGenericClient::appendCommand(cmd);
+}
+
+void lwHTTPClientLite::formatCommand()
+{
+
 }

@@ -50,7 +50,7 @@ void lwHTTPClientLite::submit()
 
 void lwHTTPClientLite::uploadValue()
 {
-    debuglog.println(cmdJSON);
+    DEBUG.println(cmdJSON);
 }
 
 

@@ -14,8 +14,16 @@ void CMD_Composite(char* &cmd,const char* s,const char* v)
     converter.appendChar(cmd,"\"},");
 }
 
+
 void lwGenericClient::submit()
 {
+    //去掉cmdJSON最后面的逗号
+    int len;
+    len=strlen(cmdJSON);
+    cmdJSON[len-1]='\0';
+    converter.appendChar(cmdJSON,"]");
+
+    formatCommand();
     uploadValue(); //由各子类来实现，提交完数据之后，复位cmdJSON和lastTime.
     clearCommand();
 
@@ -25,8 +33,8 @@ void lwGenericClient::submit()
 
 void lwGenericClient::clearCommand()
 {
-    cmdJSON = (char*) realloc(cmdJSON,1);
-    strcpy(cmdJSON, "");
+    cmdJSON = (char*) realloc(cmdJSON,2);
+    strcpy(cmdJSON, "[");
 }
 
 void lwGenericClient::appendCommand(const char* cmd)

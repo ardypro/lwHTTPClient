@@ -52,6 +52,7 @@ protected:
     virtual void uploadValue() ;
     virtual void clearCommand();
     virtual void appendCommand(const char* cmd);
+    virtual void formatCommand();
 private:
 
     EthernetClient httpClient;
