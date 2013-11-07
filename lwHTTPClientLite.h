@@ -19,6 +19,7 @@ public:
 
     lwHTTPClientLite(const char* userkey, const char* gateway):lwGenericClient(userkey,gateway)
     {
+
     }
 
     virtual ~lwHTTPClientLite()
@@ -26,18 +27,6 @@ public:
     }
 
     virtual bool connect();
-
-
-    //implements ipost
-    void append(const char* sensor, bool value);
-    void append(const char* sensor, int value);
-    void append(const char* sensor, unsigned int value);
-    void append(const char* sensor, long value);
-    void append(const char* sensor, unsigned long value);
-    void append(const char* sensor, double value,unsigned int digits=2);
-    void append(const char* sensor, const char* value);
-
-    virtual void submit();
 
     //implements iget
     virtual void getValue(const char* sensor, bool &value);
@@ -51,13 +40,8 @@ public:
 
 protected:
     virtual void uploadValue() ;
-    virtual void clearCommand();
-    virtual void appendCommand(const char* cmd);
-    virtual void formatCommand();
     EthernetClient httpClient;
 private:
-    void send(const char* str); //调试用
-
 
 };
 

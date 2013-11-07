@@ -15,101 +15,29 @@ char lwHTTPServer[] = "open.lewei50.com";
 
 bool lwHTTPClientLite::connect()
 {
-
+    Serial.print("User key:\t");
+    Serial.println(userKey);
 }
 
-void lwHTTPClientLite::append(const char* sensor, bool value)
-{
-    lwGenericClient::append(sensor,value);
-
-}
-
-void lwHTTPClientLite::append(const char* sensor, int value)
-{
-    lwGenericClient::append(sensor,value);
-
-}
-
-void lwHTTPClientLite::append(const char* sensor, unsigned int value)
-{
-    lwGenericClient::append(sensor,value);
-
-}
-
-void lwHTTPClientLite::append(const char* sensor, long value)
-{
-    lwGenericClient::append(sensor,value);
-
-}
-
-void lwHTTPClientLite::append(const char* sensor, unsigned long value)
-{
-    lwGenericClient::append(sensor,value);
-
-}
-
-void lwHTTPClientLite::append(const char* sensor, double value, unsigned int digits)
-{
-    lwGenericClient::append(sensor,value);
-
-}
-
-void lwHTTPClientLite::append(const char* sensor, const char* value)
-{
-    lwGenericClient::append(sensor,value);
-
-}
-
-
-
-void lwHTTPClientLite::submit()
-{
-    lwGenericClient::submit();
-}
-
-void lwHTTPClientLite::send(const char* str)
-{
-#ifdef DEBUGGING
-    Serial.print(str);
-#else
-    httpClient.print(str);
-#endif // DEBUGGING
-}
 
 void lwHTTPClientLite::uploadValue()
 {
-    DEBUG.println(cmdJSON);
-
-    send(cmdJSON);
-    send("POST /api/V1/Gateway/UpdateSensors/");
-    send(gateWay);
-    send(" HTTP/1.1\n");
-    send("userkey: ");
-    send(userKey);
-    send("\n");
-    send("Host: open.lewei50.com\n");
-    send("User-Agent: W5100@Arduino\n");
-    send("Content-Length: ");
-
-//#ifdef DEBUGGING
-//    Serial.print(strlen(cmdJSON));
-//#else
-//    httpClient.print(strlen(cmdJSON));
-//#endif // DEBUGGING
-
+    //发送上传指令
+    sendCMD("POST /api/V1/Gateway/UpdateSensors/");
+    sendCMD(gateWay);
+    sendCMD(" HTTP/1.1\n");
+    sendCMD("userkey: ");
+    sendCMD(userKey);
+    sendCMD("\n");
+    sendCMD("Host: open.lewei50.com\n");
+    sendCMD("User-Agent: W5100@Arduino\n");
+    sendCMD("Content-Length: ");
     sendCMD(strlen(cmdJSON));
-
-    send("\n");
-    send("Connection: close\n");
-    send("\n");
-    send(cmdJSON);
-
-
-
-
-
-
-
+    sendCMD("\n");
+    sendCMD("Connection: close\n");
+    sendCMD("\n");
+    sendCMD(cmdJSON);
+    sendCMD("\n");
 }
 
 
@@ -154,17 +82,4 @@ void lwHTTPClientLite::getValue(const char* sensor, char* &value)
 }
 
 
-void lwHTTPClientLite::clearCommand()
-{
-    lwGenericClient::clearCommand();
-}
 
-void lwHTTPClientLite::appendCommand(const char* cmd)
-{
-    lwGenericClient::appendCommand(cmd);
-}
-
-void lwHTTPClientLite::formatCommand()
-{
-
-}

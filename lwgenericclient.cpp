@@ -24,7 +24,7 @@ void lwGenericClient::submit()
     cmdJSON[len-1]='\0';
     converter.appendChar(cmdJSON,"]");
 
-    formatCommand();
+    //formatCommand();
     uploadValue(); //由各子类来实现，提交完数据之后，复位cmdJSON和lastTime.
     clearCommand();
 
@@ -50,6 +50,9 @@ void lwGenericClient::append(const char* sensor, bool value)
 
 void lwGenericClient::append(const char* sensor, int value)
 {
+
+    // TODO (Ardypro#1#): 可以考虑用snPrintf等来实现，要先测试效率
+
     char* i;
     converter.intToStr(value, i);
     CMD_Composite(cmdJSON,sensor,i);
