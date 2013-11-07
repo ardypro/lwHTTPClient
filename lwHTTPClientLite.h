@@ -13,6 +13,7 @@ class lwHTTPClientLite : public lwGenericClient, implements  IGet
 public:
     lwHTTPClientLite():lwGenericClient()
     {
+
     }
 
 
@@ -53,9 +54,10 @@ protected:
     virtual void clearCommand();
     virtual void appendCommand(const char* cmd);
     virtual void formatCommand();
-private:
-
     EthernetClient httpClient;
+private:
+    void send(const char* str); //调试用
+
 
 };
 

@@ -1,15 +1,16 @@
 #include <Arduino.h>
 #include "lwHTTPClientLite.h"
+#include "lwHTTPClient.h"
 #include "memfree.h"
 
 /*
 #include "Ethernet.h"
 #include "SPI.h"
 */
-#define userkey ""
-#define gateway ""
+#define userkey "Jack"
+#define gateway "Zhong"
 
-lwHTTPClientLite clients;
+lwHTTPClientLite clients(userkey,gateway);
 const char* sensor="humidity";
 int i=-7293;
 float f=-98.0301;
@@ -31,11 +32,14 @@ void setup()
     Serial.print("ms used: ");
     Serial.println(t);
 
+//Serial.print("Username:\t");
+//Serial.println(clients.userKey);
 }
 
 
 void upload()
 {
+    Serial.println("");
     clients.submit();
     Serial.println("====================");
 }

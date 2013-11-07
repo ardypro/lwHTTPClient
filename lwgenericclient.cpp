@@ -15,6 +15,7 @@ void CMD_Composite(char* &cmd,const char* s,const char* v)
 }
 
 
+
 void lwGenericClient::submit()
 {
     //去掉cmdJSON最后面的逗号
