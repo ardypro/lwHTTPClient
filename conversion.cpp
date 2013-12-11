@@ -79,11 +79,13 @@ unsigned int conversion::appendChar(char* &dest, const char* str)
         char *str;
 
         // Initial memory allocation
-        str = (char *) malloc (15);
-        strcpy (str, "tutorialspoint");
-        printf ("String = %s,  Address = %u\n", str, str);
+        //str = (char *) malloc (15);
+        //strcpy (str, "tutorialspoint");
+        //printf ("String = %s,  Address = %u\n", str, str);
 
-        Serial.println (str);
+        //Serial.println (str);
+
+
         // Reallocating memory
         str = (char *) realloc (str, 25);
         strcat (str, ".com");

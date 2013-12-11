@@ -7,16 +7,14 @@
 #include "Ethernet.h"
 #include "SPI.h"
 */
-//#define userkey "Jack"
-//#define gateway "Zhong"
 
-const char* userkey="Jack";
-const char* gateway="Zhong";
+
+const char* userkey="029b3884b91e4d00b514158ba1e2ac57";
+const char* gateway="02";
 
 lwHTTPClientLite clients(userkey,gateway);
-const char* sensor="humidity";
-int i=-7293;
-float f=-98.0301;
+const char* sensor="test";
+float f=-8.0301;
 
 void setup()
 {
@@ -24,24 +22,14 @@ void setup()
  }
 
 
-void upload()
-{
-    clients.submit();
-    Serial.println("\n");
-}
-
 void loop()
 {
-    delay(2000);
+    delay(12000);
 
-    bool b=true ;
-    clients.append(sensor,b);
-    upload();
 
-    i++;
     f++;
-    clients.append(sensor,i);
     clients.append(sensor,f);
-    upload();
+    clients.submit();
+    Serial.println("\r\n");
 
 }

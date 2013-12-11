@@ -12,6 +12,9 @@ void CMD_Composite(char* &cmd,const char* s,const char* v)
     converter.appendChar(cmd,"\",\"Value\":\"");
     converter.appendChar(cmd,v);
     converter.appendChar(cmd,"\"},");
+
+// TODO (Ardypro#1#): 打算优化这个工具类
+    //snprintf(cmd,1,)
 }
 
 
@@ -21,8 +24,8 @@ void lwGenericClient::submit()
     //去掉cmdJSON最后面的逗号
     int len;
     len=strlen(cmdJSON);
-    cmdJSON[len-1]='\0';
-    converter.appendChar(cmdJSON,"]");
+    cmdJSON[len-1]=']';
+    //converter.appendChar(cmdJSON,"]");
 
     //formatCommand();
     uploadValue(); //由各子类来实现，提交完数据之后，复位cmdJSON和lastTime.
@@ -41,6 +44,9 @@ void lwGenericClient::clearCommand()
 void lwGenericClient::appendCommand(const char* cmd)
 {
     converter.appendChar(cmdJSON, cmd);
+
+    Serial.print("Current json:\t");
+    Serial.println(cmdJSON);
 }
 
 void lwGenericClient::append(const char* sensor, bool value)

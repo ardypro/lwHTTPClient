@@ -48,6 +48,7 @@ class lwGenericClient : public IPost
 public:
     lwGenericClient(const char* userkey, const char* gateway)
     {
+        active = false;
         cmdJSON=(char*) malloc(9);
         clearCommand();
         lastTime = millis();
@@ -58,6 +59,7 @@ public:
 
     lwGenericClient()
     {
+        active =false ;
         cmdJSON=(char*) malloc(9);
         clearCommand();
         lastTime = millis();
@@ -89,7 +91,7 @@ protected:
     const char* userKey;
     const char* gateWay;
     char* cmdJSON;
-
+    bool active; //保存ethernet.begin()返回结果的
     virtual void uploadValue() = 0;
     virtual void clearCommand();
     virtual void appendCommand(const char* cmd);
