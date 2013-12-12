@@ -10,7 +10,7 @@ const char* gw= "02";
 lwSimpleHTTPClient* cl;
 
 int i=-2;
-
+float f=-2.38;
 void setup()
 {
     Serial.begin(4800);
@@ -25,11 +25,11 @@ void setup()
 
 void loop()
 {
-   if( cl->append("test",i))
+   if( cl->append("test",f))
 		Serial.println("append successfully");
 	 else
 		Serial.println("append failed");
     cl->send();
-    i++;
+    f++;
     delay(12000);
 }

@@ -23,9 +23,11 @@ bool lwSimpleHTTPClient::begin()
         return true;
 }
 
+//#define post(l,v) ({sendHeader();client.println(lengthOfInt(l)+LENTH+strlen(sensor));client.println("Connection: close");client.println();client.print("[{\"Name\":\"");client.print(sensor);client.print("\",\"Value\":\"");client.print(v);client.println ("\"}]");})
+
 void lwSimpleHTTPClient::sendHeader()
 {
-    Serial.println("sending json");
+//    Serial.println("sending json");
 
     client.print("POST /api/V1/Gateway/UpdateSensors/");
     client.print(gateWay);
@@ -48,16 +50,20 @@ void lwSimpleHTTPClient::sendHeader()
 #endif
 }
 
+//#define CLIENTPRINT "client.print(value);"
+
 bool lwSimpleHTTPClient::append(const char* sensor, int value)
 {
+// TODO (Jack#1#): 以后尝试复用浮点的append()
+
     bool ret;
     if (client.connect(LEWEISERVER,80))
         {
             sendHeader();
             client.println(lengthOfInt(value)+LENTH+strlen(sensor));
-                       client.println("Connection: close");
-                       client.println();
-                        client.print("[{\"Name\":\"");
+            client.println("Connection: close");
+            client.println();
+            client.print("[{\"Name\":\"");
             client.print(sensor);
             client.print("\",\"Value\":\"");
             client.print(value);
@@ -79,6 +85,7 @@ bool lwSimpleHTTPClient::append(const char* sensor, int value)
     else
         ret=false;
 
+exitHere:
     client.stop();
     return ret;
 }
@@ -107,28 +114,34 @@ void lwSimpleHTTPClient::send()
 
 bool lwSimpleHTTPClient::append(const char* sensor, double value,unsigned int digits)
 {
-    int i;
-    i= (int) value * 10^digits;
-
     bool ret;
     if (client.connect(LEWEISERVER,80))
         {
             sendHeader();
-            client.print(lengthOfInt(i)+LENTH+strlen(sensor));
-            client.print("\r\n");
-            client.print("Connection: close\r\n");
-            client.println("\r\n"); //必须的空白行
+            client.println(lengthOfInt((int)value)+LENTH+strlen(sensor)+digits);
+            client.println("Connection: close");
+            client.println();
             client.print("[{\"Name\":\"");
             client.print(sensor);
             client.print("\",\"Value\":\"");
-            client.print(value);
-            client.println ("\"}]\r\n");
+            client.print(value,digits);
+            client.println ("\"}]");
 
-            ret=true;
+#ifdef DEBUGGING
+            Serial.println(lengthOfInt((int)value)+LENTH+strlen(sensor)+digits);
+            Serial.println("Connection: close");
+            Serial.println(""); //必须的空白行
+            Serial.print("[{\"Name\":\"");
+            Serial.print(sensor);
+            Serial.print("\",\"Value\":\"");
+            Serial.print(value, digits);
+            Serial.println ("\"}]");
+#endif // DEBUGGING
+            ret= true;
         }
     else
         ret=false;
-
+exitHere:
     client.stop();
     return ret;
 }
