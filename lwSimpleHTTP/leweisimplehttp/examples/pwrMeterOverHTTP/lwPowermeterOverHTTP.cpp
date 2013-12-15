@@ -11,18 +11,20 @@ lwPowermeterOverHTTP::~lwPowermeterOverHTTP()
   //dtor
 }
 
-bool lwPowermeterOverHTTP::postBatchPowerInfo(int watt, float amp, float kwh, float pf, float voltage)
+bool lwPowermeterOverHTTP::postBatchPowerInfo(int watt, float amp, float kwh, float pf, float voltage, float temperature, float humidity)
 {
   bool ret;
 
   if (client.connect(LEWEISERVER,80))
   {
-    byte len=130; //去除value值之后的所有字符长度
+    byte len=179; //去除value值之后的所有字符长度
     len += lengthOfInt(watt);
     len += lengthOfDbl(amp);
     len += lengthOfDbl(kwh);
     len += lengthOfDbl(pf);
     len += lengthOfDbl(voltage);
+    len += lengthOfDbl(temperature);
+    len += lengthOfDbl(humidity);
 
     sendHeader();
     client.println(len);
@@ -58,6 +60,18 @@ bool lwPowermeterOverHTTP::postBatchPowerInfo(int watt, float amp, float kwh, fl
     client.print("{\"Name\":\"DY");
     client.print("\",\"Value\":\"");
     client.print(voltage);
+    client.print("\"},");
+
+    //温度
+    client.print("{\"Name\":\"WD");
+    client.print("\",\"Value\":\"");
+    client.print(temperature);
+    client.print("\"},");
+
+    //湿度
+    client.print("{\"Name\":\"SD");
+    client.print("\",\"Value\":\"");
+    client.print(humidity);
     client.print("\"}");
 
     client.println ("]");
@@ -96,11 +110,24 @@ bool lwPowermeterOverHTTP::postBatchPowerInfo(int watt, float amp, float kwh, fl
     Serial.print("{\"Name\":\"DY");
     Serial.print("\",\"Value\":\"");
     Serial.print(voltage);
+    Serial.print("\"},");
+
+    //温度
+    Serial.print("{\"Name\":\"WD");
+    Serial.print("\",\"Value\":\"");
+    Serial.print(temperature);
+    Serial.print("\"},");
+
+    //湿度
+    Serial.print("{\"Name\":\"SD");
+    Serial.print("\",\"Value\":\"");
+    Serial.print(humidity);
     Serial.print("\"}");
 
     Serial.println ("]");
     Serial.println();
     Serial.println();
+
 #endif // DEBUGGING
     ret= true;
   }
@@ -111,4 +138,6 @@ exitHere:
   client.stop();
   return ret;
 }
+
+
 

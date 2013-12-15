@@ -6,7 +6,7 @@
 #include "SPI.h"
 #include "Arduino.h"
 
-//#define DEBUGGING
+#define DEBUGGING
 
 
 //inline byte lengthOfInt(int value)
@@ -36,7 +36,8 @@ public lwSimpleHTTPClient
 public:
   lwPowermeterOverHTTP(const char* userkey, const char* gateway);
   virtual ~lwPowermeterOverHTTP();
-  bool postBatchPowerInfo(int watt, float amp, float kwh, float pf, float voltage);
+  bool postBatchPowerInfo(int watt, float amp, float kwh, float pf, float voltage, float temperature=0.00, float humidity=0.00);
+ 
 protected:
 private:
 };
