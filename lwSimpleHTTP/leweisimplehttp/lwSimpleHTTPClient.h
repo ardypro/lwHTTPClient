@@ -1,7 +1,10 @@
 #ifndef LWSIMPLEHTTPCLIENT_H
 #define LWSIMPLEHTTPCLIENT_H
 
-#include <Ethernet.h>
+
+#include "Ethernet.h"
+#include "EthernetClient.h"
+#include "SPI.h"
 
 #define LEWEISERVER "open.lewei50.com"
 #define LENTH 25
@@ -18,12 +21,11 @@ public:
     bool append(const char* sensor, double value,unsigned int digits=2);
     void send(); //为了兼容保留的，没有实际意义
 protected:
-
+    EthernetClient client;
 private:
     void sendHeader();
-
     byte lengthOfInt(int value);
-    EthernetClient client;
+
     const char* userKey;
     const char* gateWay;
 

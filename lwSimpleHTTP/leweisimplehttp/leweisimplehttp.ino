@@ -1,7 +1,9 @@
 #include <Arduino.h>
 #include "lwSimpleHTTPClient.h"
 
-
+#include "Ethernet.h"
+#include "EthernetClient.h"
+#include "SPI.h"
 
 
 const char* uk  ="029b3884b91e4d00b514158ba1e2ac57";

@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1386815479 source:e:\repo\git\ongithub\lwclients\lwhttpclient\lwsimplehttp\leweisimplehttp\leweisimplehttp.ino
+1386830196 source:e:\repo\git\ongithub\lwclients\lwhttpclient\lwsimplehttp\leweisimplehttp\leweisimplehttp.ino
 	<Arduino.h>
 	"lwSimpleHTTPClient.h"
 
@@ -53,9 +53,12 @@
 1362986950 p:\portable app\arduinoide\codeblocks4arduino\arduino\hardware\arduino\variants\standard\pins_arduino.h
 	<avr/pgmspace.h>
 
-1386816293 source:e:\repo\git\ongithub\lwclients\lwhttpclient\lwsimplehttp\leweisimplehttp\lwsimplehttpclient.cpp
+1386830196 source:e:\repo\git\ongithub\lwclients\lwhttpclient\lwsimplehttp\leweisimplehttp\lwsimplehttpclient.cpp
 	"lwSimpleHTTPClient.h"
 
 1386809963 e:\repo\git\ongithub\lwclients\lwhttpclient\lwsimplehttp\leweisimplehttp\lwsimplehttpclient.h
 	<Ethernet.h>
+
+1362986950 p:\portable app\arduinoide\codeblocks4arduino\arduino\hardware\arduino\variants\mega\pins_arduino.h
+	<avr/pgmspace.h>
 
