@@ -1,3 +1,0 @@
-lwSimpleHTTPClient	KEYWORD1
-post	KEYWORD2
-initialize	KEYWORD2
