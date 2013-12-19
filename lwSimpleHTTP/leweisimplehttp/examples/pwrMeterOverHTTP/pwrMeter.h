@@ -1,5 +1,14 @@
 #ifndef PWRMETER_H
 #define PWRMETER_H
+//如果跟485通信的是软串口，就需要屏蔽下面这句
+#define HARDSERIAL
+
+#ifdef HARDSERIAL
+#include "HardwareSerial.h"
+#else
+#include "SoftwareSerial.h"
+#endif
+#include "Arduino.h"
 
 /*
   ModbusReaderMethodTwo - example from LT/JSY C code
@@ -49,6 +58,46 @@
  }
  */
 
+
+/* FIXME: not yet being used */
+unsigned long interframe_delay = 2;  /* Modbus t3.5 = 2 ms */
+
+/*
+* preset_multiple_registers: Modbus function 16. Write the data from an
+ * array into the holding registers of a slave.
+ * INPUTS
+ * slave: modbus slave id number
+ * start_addr: address of the slave's first register (+1)
+ * reg_count: number of consecutive registers to preset
+ * data: array of words (ints) with the data to write into the slave
+ * RETURNS: the number of bytes received as response on success, or
+ *         0 if no bytes received (i.e. response timeout)
+ *        -1 to -4 (modbus exception code)
+ *        -5 for other errors (port error, etc.).
+ */
+
+int preset_multiple_registers(int slave, int start_addr,
+                              int reg_count, int *data);
+
+/*
+* read_holding_registers: Modbus function 3. Read the holding registers
+ * in a slave and put the data into an array
+ * INPUTS
+ * slave: modbus slave id number
+ * start_addr: address of the slave's first register (+1)
+ * count: number of consecutive registers to read
+ * dest: array of words (ints) on which the read data is to be stored
+ * dest_size: size of the array, which should be at least 'count'
+ * RETURNS: the number of bytes received as response on success, or
+ *         0 if no valid response received (i.e. response timeout, bad crc)
+ *        -1 to -4 (modbus exception code)
+ *        -5 for other errors (port error, etc.).
+ */
+
+int read_holding_registers(int slave, int start_addr, int count,
+                           int *dest, int dest_size);
+
+
 inline unsigned int calccrc(unsigned char crcbuf, unsigned int crc)
 {
     unsigned char i;
@@ -85,21 +134,21 @@ inline unsigned int chkcrc(unsigned char *buf, unsigned char len)
     return crc;
 }
 
-//如果跟485通信的是软串口，就需要屏蔽下面这句
-#define HARDSERIAL
 
-#ifdef HARDSERIAL
-#include "HardwareSerial.h"
-#else
-#include "SoftwareSerial.h"
-#endif
-#include "Arduino.h"
 
 #define TX_BUFFER_SIZE 8
-#define TIMEOUT 10000          /* 10 second */
-#define MAX_RESPONSE_LENGTH 256
-#define PORT_ERROR 0   //原来为-5
+// #define TIMEOUT 10000          /* 10 second */
+// #define MAX_RESPONSE_LENGTH 256
+// #define PORT_ERROR 0   //原来为-5
 
+//#define TIMEOUT 1000          /* 1 second */
+#define TIMEOUT 10000          /* 10 second */
+#define MAX_READ_REGS 125
+#define MAX_WRITE_REGS 125
+#define MAX_RESPONSE_LENGTH 256
+#define PRESET_QUERY_SIZE 256
+/* errors */
+#define PORT_ERROR -5
 
 class pwrMeter
 {
@@ -115,11 +164,17 @@ public:
     bool readData(int &watt, float &amp, float &kwh, float &pf, float &voltage);
 
 protected:
-    byte send_query(unsigned char *query, size_t string_length);
+    int send_query(unsigned char *query, size_t string_length);
     byte receive_response(unsigned char *received_string);
     //unsigned int calccrc(unsigned char crcbuf,unsigned int crc);
     //unsigned int chkcrc(unsigned char *buf,unsigned char len);
     //int Analysis_data(void);
+
+    void modbus_query(unsigned char *packet, size_t string_length);
+    void build_request_packet(int slave, int function, int start_addr,
+                          int count, unsigned char *packet);
+    unsigned int crc(unsigned char *buf, int start, int cnt);
+
     byte read_data(void);
     byte Read_ID;
     // union crcdata
